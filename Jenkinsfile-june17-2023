@@ -1,19 +1,17 @@
-pipeline{
+pipeline {
     agent any 
     tools {
         maven "maven3.9.2"
-
     }
-
+    }
     stages{
         stage('checkoutfromsourcecode'){
             steps{
                 sh "echo 'today is june 17' "
                 git 'https://github.com/Ogedasilver/jenkins-cicd-june17-2023.git'
             }
-
+        }
     }
-
     stages{
         stage('Test+package+build')
             steps{
