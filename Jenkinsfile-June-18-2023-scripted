@@ -19,7 +19,7 @@ node{
     }
     stage('deploy-dev'){
         sh "echo 'deploy to dev environment'"
-        deploy adapters: [tomcat9(credentialsId: 'tomcat-deploy', path: '', url: 'http://44.208.161.47:8009/')], contextPath: 'dev', war: 'target/*.war'
+        deploy adapters: [tomcat9(credentialsId: 'jenkins-tomcat', path: '', url: 'http://50.17.37.72:8009/')], contextPath: 'dev', war: 'target/*.war'
     }
 
     stage('approvalgate'){
@@ -33,7 +33,7 @@ node{
     }
 
     stage('deploy-to-staging'){
-        deploy adapters: [tomcat9(credentialsId: 'tomcat-deploy', path: '', url: 'http://44.208.161.47:8009/')], contextPath: 'stagin-environment', war: 'target/*.war'
+        deploy adapters: [tomcat9(credentialsId: 'jenkins-tomcat', path: '', url: 'http://50.17.37.72:8009/')], contextPath: 'staging', war: 'target/*.war'
     }
 
     stage('approvalgate'){
