@@ -10,9 +10,12 @@ node{
         deploy adapters: [tomcat9(credentialsId: 'jenkins-tomcat', path: '', url: 'http://3.81.227.111:8009/')], contextPath: 'tomcat', war: 'target/*.war'
     }
 
-    stage('3-code quality-analysis'){
+    stage("build & SonarQube analysis"){
+        withSonarQubeEnv('My SonarQube Server') {
         sh "${mavenHome}/bin/mvn sonar:sonar"
+
     }
+
     stage('4-upload to nexus'){
         sh "${mavenHome}/bin/mvn deploy"
     }
