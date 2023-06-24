@@ -11,8 +11,11 @@ node{
     }
 
     stage("build & SonarQube analysis"){
+        node{
         withSonarQubeEnv('My SonarQube Server') {
         sh "${mavenHome}/bin/mvn sonar:sonar"
+
+    }
 
     }
 
@@ -20,7 +23,8 @@ node{
         sh "${mavenHome}/bin/mvn deploy"
     }
     stage('5-deploy to tomcat'){
-        sh "echo 'deploy to dev environment'"
+    sh "echo 'deploy to dev environment'"
+
     }
 
     stage('approvalgate'){
@@ -53,6 +57,9 @@ node{
         }
 
     }
+
+
+}
 
 
 }
