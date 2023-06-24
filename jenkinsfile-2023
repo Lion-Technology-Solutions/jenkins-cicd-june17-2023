@@ -14,7 +14,7 @@ node{
         sh "${mavenHome}/bin/mvn sonar:sonar"
     }
     stage('4-upload to nexus'){
-        sh "${mvnHome}/bin/mvn deploy"
+        sh "${mavenHome}/bin/mvn deploy"
     }
     stage('5-deploy to tomcat'){
         sh "echo 'deploy to dev environment'"
@@ -48,7 +48,7 @@ node{
 
        
         }
-        
+
     }
 
 
